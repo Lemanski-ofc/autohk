@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 // Rota para criar um novo veículo
-app.post('/vehicles', async (req, res) => {
+app.post('/veiculos', async (req, res) => {
   const { vehicle, marca, ano, descricao, vendido } = req.body;
   const newVehicle = await prisma.vehicle.create({
     data: {
@@ -22,13 +22,13 @@ app.post('/vehicles', async (req, res) => {
 });
 
 // Rota para retornar todos os veículos
-app.get('/vehicles', async (req, res) => {
+app.get('/veiculos', async (req, res) => {
   const vehicles = await prisma.vehicle.findMany();
   res.json(vehicles);
 });
 
 // Rota para modificar um veículo pelo ID
-app.put('/vehicles/:id', async (req, res) => {
+app.put('/veiculos/:id', async (req, res) => {
   const { id } = req.params;
   const { vehicle, marca, ano, descricao, vendido } = req.body;
   const updatedVehicle = await prisma.vehicle.update({
@@ -47,7 +47,7 @@ app.put('/vehicles/:id', async (req, res) => {
 });
 
 //Deleta um veiculo pelo seu ID
-app.delete('/vehicles/:id', async (req, res) => {
+app.delete('/veiculos/:id', async (req, res) => {
     const { id } = req.params;
     
     try {
@@ -59,8 +59,8 @@ app.delete('/vehicles/:id', async (req, res) => {
       res.status(500).json({ error: 'Error deleting vehicle' });
     }
   });
-  
-  app.get('/vehicles/:marca', async (req, res) => {
+  //Rota para pesquisar por parametro
+  app.get('/veiculos/:marca', async (req, res) => {
     const { marca } = req.params;
   
     const vehicles = await prisma.vehicle.findMany({
@@ -72,7 +72,8 @@ app.delete('/vehicles/:id', async (req, res) => {
     res.json(vehicles);
   });
   
-  app.patch('/vehicles/:id', async (req, res) => {
+  //Rota para alterar algo especifico
+  app.patch('/veiculos/:id', async (req, res) => {
     const { id } = req.params;
     const { vehicle, marca, ano, descricao, vendido } = req.body;
     
@@ -95,6 +96,7 @@ app.delete('/vehicles/:id', async (req, res) => {
     }
   });
 
+  //Rota para visualizar um veiculo pelo id
   app.get('/veiculos/:id', async (req, res) => {
     const { id } = req.params;
     const veiculo = await prisma.veiculo.findUnique({
@@ -103,8 +105,6 @@ app.delete('/vehicles/:id', async (req, res) => {
     res.json(veiculo);
   });
   
-  
-
 app.listen(4002, () => {
-  console.log('Server is running on http://localhost:4002');
+  console.log('Servidor esta rodando');
 });
