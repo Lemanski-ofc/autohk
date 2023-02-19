@@ -11,10 +11,12 @@ datasource db {
 }
 
 model Vehicle {
-  id        Int     @id @default(autoincrement())
-  nome      String
+  id        Int      @id @default(autoincrement())
+  vehicle   String
   marca     String
-  descricao String
   ano       Int
-  criado    DateTime @default(now())
+  descricao String
+  vendido   Boolean
+  created   DateTime @default(now())
+  updated   DateTime @updatedAt
 }

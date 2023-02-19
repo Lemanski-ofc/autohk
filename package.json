@@ -1,17 +1,28 @@
 {
   "name": "bautohk",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lemanski-ofc/bautohk.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lucas Lemanski",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lemanski-ofc/bautohk/issues"
+  },
+  "homepage": "https://github.com/Lemanski-ofc/bautohk#readme",
   "dependencies": {
     "@prisma/client": "^4.10.1",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "prisma": "^4.10.1",
     "sqlite3": "^5.1.4"
-  }
+  },
+  "description": ""
 }
